@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+
+<h4>You have successfully minced your URL.</h4>
+<p>
+  <b>Your original URL:</b>
+  <%= link_to @short.full, @short.full %>
+</p>
+<p>
+  <b>Your minced URL:</b>
+  <%= link_to short_url(@short), short_url(@short)  %>
+</p>	
+
+
+
+<%= link_to 'Back', shorts_path %>
