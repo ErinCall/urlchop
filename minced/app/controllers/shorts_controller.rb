@@ -1,14 +1,6 @@
 class ShortsController < ApplicationController
-  # GET /shorts
-  # GET /shorts.json
-  def index
-    @shorts = Short.all
+ 
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shorts }
-    end
-  end
 
   # GET /shorts/1
   # GET /shorts/1.json
@@ -16,7 +8,7 @@ class ShortsController < ApplicationController
     @short = Short.find(params[:id])
 
     respond_to do |format|
-      format.html # {redirect_to @short.full} 
+      format.html 
       format.json { render json: @short }
     end
   end
@@ -32,10 +24,14 @@ class ShortsController < ApplicationController
     end
   end
 
-  # GET /shorts/1/edit
-  def edit
+  def redirect
     @short = Short.find(params[:id])
-  end
+
+    respond_to do |format|
+      format.html {redirect_to @short.full} 
+      format.json { render json: @short }
+    end
+  end 
 
   # POST /shorts
   # POST /shorts.json

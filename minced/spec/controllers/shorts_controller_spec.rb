@@ -30,13 +30,6 @@ describe ShortsController do
   # ShortsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all shorts as @shorts" do
-      short = Short.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:shorts).should eq([short])
-    end
-  end
 
   describe "GET show" do
     it "assigns the requested short as @short" do
@@ -50,14 +43,6 @@ describe ShortsController do
     it "assigns a new short as @short" do
       get :new, {}, valid_session
       assigns(:short).should be_a_new(Short)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested short as @short" do
-      short = Short.create! valid_attributes
-      get :edit, {:id => short.to_param}, valid_session
-      assigns(:short).should eq(short)
     end
   end
 
@@ -98,63 +83,5 @@ describe ShortsController do
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested short" do
-        short = Short.create! valid_attributes
-        # Assuming there are no other shorts in the database, this
-        # specifies that the Short created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Short.any_instance.should_receive(:update_attributes).with({ "full" => "MyString" })
-        put :update, {:id => short.to_param, :short => { "full" => "MyString" }}, valid_session
-      end
-
-      it "assigns the requested short as @short" do
-        short = Short.create! valid_attributes
-        put :update, {:id => short.to_param, :short => valid_attributes}, valid_session
-        assigns(:short).should eq(short)
-      end
-
-      it "redirects to the short" do
-        short = Short.create! valid_attributes
-        put :update, {:id => short.to_param, :short => valid_attributes}, valid_session
-        response.should redirect_to(short)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the short as @short" do
-        short = Short.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Short.any_instance.stub(:save).and_return(false)
-        put :update, {:id => short.to_param, :short => { "full" => "invalid value" }}, valid_session
-        assigns(:short).should eq(short)
-      end
-
-      it "re-renders the 'edit' template" do
-        short = Short.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Short.any_instance.stub(:save).and_return(false)
-        put :update, {:id => short.to_param, :short => { "full" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested short" do
-      short = Short.create! valid_attributes
-      expect {
-        delete :destroy, {:id => short.to_param}, valid_session
-      }.to change(Short, :count).by(-1)
-    end
-
-    it "redirects to the shorts list" do
-      short = Short.create! valid_attributes
-      delete :destroy, {:id => short.to_param}, valid_session
-      response.should redirect_to(shorts_url)
-    end
-  end
 
 end
