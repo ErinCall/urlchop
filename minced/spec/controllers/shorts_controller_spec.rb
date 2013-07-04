@@ -83,5 +83,29 @@ describe ShortsController do
     end
   end
 
+  describe "GET redirect" do 
+
+    before(:each) do
+      @short = Short.create! valid_attributes
+    end
+
+    it "assigns the requested short as @short" do
+      get :redirect, {:id => @short.to_param}, valid_session
+      assigns(:short).should eq(@short)
+    end
+
+    it "redirects to the original url" do
+      get :redirect, {:id => @short.to_param}, valid_session
+      response.should redirect_to(@short.full)
+    end
+
+    it "increments the click_count" do 
+      expect { 
+        get :redirect, {:id => @short.to_param}, valid_session
+        }.to change{@short.reload.click_count}.by(1)
+    end
+
+  end   
+
 
 end

@@ -28,9 +28,11 @@ class ShortsController < ApplicationController
     @short = Short.find(params[:id])
 
     respond_to do |format|
-      format.html {redirect_to @short.full} 
+      format.html {redirect_to @short.full}   
       format.json { render json: @short }
     end
+
+    Short.increment_counter(:click_count, @short.id)
   end 
 
   # POST /shorts

@@ -2,7 +2,7 @@ Minced::Application.routes.draw do
   get '/new' => 'shorts#new', :as => 'new_short'
   post '/' => 'shorts#create', :as => 'shorts'
   get '/show/:id' => 'shorts#show', :as => 'short'
-  get '/:id' => 'shorts#redirect'
+  get '/:id' => 'shorts#redirect', :as => 'redirect'
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

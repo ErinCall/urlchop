@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608032853) do
+ActiveRecord::Schema.define(:version => 20130618205613) do
 
   create_table "shorts", :force => true do |t|
     t.string   "full"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "click_count"
   end
 
 end
